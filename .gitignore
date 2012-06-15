@@ -1,0 +1,6 @@
+*~
+*.orig
+*.bak
+build/
+BUILD/
+Build/
