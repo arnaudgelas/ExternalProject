@@ -82,7 +82,7 @@ else()
   set( _processOpenCV true )
 endif()
 
-if( ${_processOpenCV )
+if( ${_processOpenCV} )
   option( BUILD_OPENCV "Build OpenCV ${OpenCV_RequiredVersion}" ON )
 
   if( ${BUILD_OPENCV} )
