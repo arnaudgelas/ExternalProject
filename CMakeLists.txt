@@ -71,7 +71,7 @@ set( _processOpenCV false )
 
 if( ${OpenCV_FOUND} )
   if( ${OpenCV_VERSION} LESS ${OpenCV_RequiredVersion} )
-    message( "OpenCV found --- ${OpenCV_VERSION}  ( < ${OpenCV_RequiredVersi    on} )" )
+    message( "OpenCV found --- ${OpenCV_VERSION}  ( < ${OpenCV_RequiredVersion} )" )
     set( processOpenCV true )
   else()
     message( "OpenCV found --- ${OpenCV_VERSION}  OK" )
