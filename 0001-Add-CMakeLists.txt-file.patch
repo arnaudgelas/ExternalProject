@@ -13,7 +13,7 @@ new file mode 100644
 index 0000000..35f457e
 --- /dev/null
 +++ b/CMakeLists.txt
-@@ -0,0 +1,27 @@
+@@ -0,0 +1,29 @@
 +project( tinyxml )
 +
 +cmake_minimum_required( VERSION 2.6 )
@@ -27,6 +27,7 @@ index 0000000..35f457e
 +endif()
 +
 +set( sources
++  tinystr.cpp
 +  tinyxml.cpp
 +  tinyxmlparser.cpp
 +  tinyxmlerror.cpp
@@ -40,7 +41,8 @@ index 0000000..35f457e
 +install( TARGETS tinyxml
 +         RUNTIME DESTINATION bin
 +         LIBRARY DESTINATION lib
-+         ARCHIVE DESTINATION lib )
++         ARCHIVE DESTINATION lib
++)
 -- 
 1.7.9.5
 
