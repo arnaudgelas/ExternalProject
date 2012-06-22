@@ -13,6 +13,8 @@ else()
 endif()
 
 
+set( CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR} )
+
 # ---------------------------------------------------------------------------------------------
 # Boost with Boost.Log
 #
@@ -117,8 +119,7 @@ endif()
 #
 option( BUILD_ITK "Build ITK v4.2rc02" OFF )
 
-if( ${BUILD_ITK} )
-  find_package(Git REQUIRED)
+find_package(Git REQUIRED)
   if(NOT GIT_FOUND)
     message(ERROR "Cannot find git. git is required for Superbuild")
   endif()
@@ -130,6 +131,7 @@ if( ${BUILD_ITK} )
     set(git_protocol "http")
   endif()
 
+if( ${BUILD_ITK} )
   ExternalProject_Add(ITK
     DEPENDS opencv
     GIT_REPOSITORY ${git_protocol}://itk.org/ITK.git
@@ -190,7 +192,29 @@ if( ${_processOSG} )
   )
 endif()
 
+option( BUILD_TINYXML "Build TinyXML" ON )
 
+if( ${BUILD_TINYXML} MATCHES "ON" )
+  find_package( TinyXML )
+
+  if( NOT ${TINYXML_FOUND} )
+    ExternalProject_Add( TinyXML
+      GIT_REPOSITORY ${git_protocol}://tinyxml.git.sourceforge.net/gitroot/tinyxml/tinyxml
+      GIT_TAG 94b1760fb66268262b2aad8533e2639bab3ff5b1
+      SOURCE_DIR TinyXML
+      BINARY_DIR TinyXML-build
+      UPDATE_COMMAND ""
+      PATCH_COMMAND git apply ${CMAKE_SOURCE_DIR}/0001-Add-CMakeLists.txt-file.patch
+      CMAKE_GENERATOR ${gen}
+      CMAKE_ARGS
+        ${ep_common_args}
+        -DBUILD_SHARED:BOOL=ON
+        -DCMAKE_BUILD_TYPE:STRING=Release
+        -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_BINARY_DIR}/INSTALL
+    )
+
+  endif()
+endif()
 
 #find_package( Boost 1.49 REQUIRED COMPONENTS filesystem system date_time thread regex log )
 #if( Boost_FOUND )
