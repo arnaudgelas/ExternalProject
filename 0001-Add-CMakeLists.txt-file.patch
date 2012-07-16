@@ -1,0 +1,48 @@
+From d487b521f0285ebbcb86bea65586eca039502be2 Mon Sep 17 00:00:00 2001
+From: Arnaud Gelas <arnaudgelas@gmail.com>
+Date: Fri, 22 Jun 2012 14:37:55 +0200
+Subject: [PATCH] Add CMakeLists.txt file
+
+---
+ CMakeLists.txt |   27 +++++++++++++++++++++++++++
+ 1 file changed, 27 insertions(+)
+ create mode 100644 CMakeLists.txt
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+new file mode 100644
+index 0000000..35f457e
+--- /dev/null
++++ b/CMakeLists.txt
+@@ -0,0 +1,29 @@
++project( tinyxml )
++
++cmake_minimum_required( VERSION 2.6 )
++
++option( BUILD_SHARED "Build shared libraries" ON )
++
++if( ${BUILD_SHARED} MATCHES "ON" )
++  set( shared SHARED )
++else()
++  set( shared )
++endif()
++
++set( sources
++  tinystr.cpp
++  tinyxml.cpp
++  tinyxmlparser.cpp
++  tinyxmlerror.cpp
++)
++
++add_library( tinyxml ${shared}
++  ${sources}
++)
++
++install( FILES tinyxml.h tinystr.h DESTINATION include )
++install( TARGETS tinyxml
++         RUNTIME DESTINATION bin
++         LIBRARY DESTINATION lib
++         ARCHIVE DESTINATION lib
++)
+-- 
+1.7.9.5
+

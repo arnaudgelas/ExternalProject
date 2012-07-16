@@ -1,4 +1,6 @@
-build/
 *~
-CMakeLists.txt.user*
-
+*.orig
+*.bak
+build/
+BUILD/
+Build/
