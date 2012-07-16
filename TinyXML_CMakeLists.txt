@@ -1,0 +1,19 @@
+project( tinyxml )
+
+cmake_minimum_required( VERSION 2.6 )
+
+set( sources
+  tinystr.cpp
+  tinyxml.cpp
+  tinyxmlparser.cpp
+  tinyxmlerror.cpp
+)
+
+add_library( tinyxml ${sources} )
+
+install( FILES tinyxml.h tinystr.h DESTINATION include )
+install( TARGETS tinyxml
+         RUNTIME DESTINATION lib
+         LIBRARY DESTINATION lib
+         ARCHIVE DESTINATION lib
+)
