@@ -3,11 +3,6 @@ if(NOT GIT_FOUND)
   message(ERROR "Cannot find git. git is required for Superbuild")
 endif()
 
-find_package(Subversion)
-if(NOT SUBVERSION_FOUND)
-  message(ERROR "Cannot find subversion. subversion is required for Superbuild")
-endif()
-
 option( USE_GIT_PROTOCOL "If behind a firewall turn this off to use http instead." ON)
 
 set(git_protocol "git")
@@ -81,7 +76,7 @@ endif()
 # ---------------------------------------------------------------------------------------------
 # ITK With Bridge to OpenCV
 #
-option( BUILD_ITK "Build ITK v4.2rc02" ON )
+option( BUILD_ITK "Build ITK v4.2" ON )
 
 if( ${BUILD_ITK} )
   include( ${CMAKE_CURRENT_SOURCE_DIR}/External-ITK.cmake )

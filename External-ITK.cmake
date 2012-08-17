@@ -9,7 +9,7 @@ endif()
 ExternalProject_Add(ITK
   DEPENDS ${ITK_DEPENDENCIES}
   GIT_REPOSITORY ${git_protocol}://itk.org/ITK.git
-  GIT_TAG v4.2rc02
+  GIT_TAG v4.2.0
   SOURCE_DIR ITK
   BINARY_DIR ITK-build
   UPDATE_COMMAND ""

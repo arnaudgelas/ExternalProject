@@ -1,12 +1,8 @@
 message( "External project - OpenCV" )
 
-find_package( Subversion REQUIRED )
-if( NOT SUBVERSION_FOUND )
-  message( ERROR "Cannot find subversion. Subversion is required for Superbuild." )
-endif()
-
 ExternalProject_Add(opencv
-  SVN_REPOSITORY http://code.opencv.org/svn/opencv/tags/2.3.1/opencv/
+  GIT_REPOSITORY ${git_protocol}://code.opencv.org/opencv.git
+  GIT_TAG 2.3.1
   SOURCE_DIR opencv
   BINARY_DIR opencv-build
   UPDATE_COMMAND ""
